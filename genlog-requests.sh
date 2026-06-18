@@ -1,9 +1,34 @@
-
 #!/bin/bash
  
 OUTPUT="access.log"
 LINES=500
  
+
+IPS=(215.225.119.67
+215.246.20.38
+216.6.243.8
+216.74.164.87
+217.169.106.92
+217.240.141.247
+218.77.138.114
+218.176.242.51
+218.252.137.170
+219.113.95.27
+220.37.29.41
+220.74.72.148
+220.168.198.21
+220.201.220.105
+221.21.64.234
+221.26.68.130
+221.152.154.245
+222.19.148.9
+222.125.137.75
+222.154.253.16
+223.89.122.98
+223.174.76.63
+223.185.179.79)
+
+
 PATHS=("/" "/index.html" "/about" "/contact" "/api/users" "/api/products" \
        "/login" "/logout" "/images/logo.png" "/css/style.css" "/js/app.js" \
        "/favicon.ico" "/admin" "/search" "/cart" "/blog/post-1" "/blog/post-2")
@@ -17,7 +42,8 @@ MONTHS=("Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov" "Dec")
 > "$OUTPUT"
  
 for ((i = 1; i <= LINES; i++)); do
-    ip="$((RANDOM % 223 + 1)).$((RANDOM % 256)).$((RANDOM % 256)).$((RANDOM % 256))"
+    ip=${IPS[$((RANDOM % ${#IPS[@]}))]}
+ 
  
     day=$(printf "%02d" $((RANDOM % 28 + 1)))
     month=${MONTHS[$((RANDOM % 12))]}
